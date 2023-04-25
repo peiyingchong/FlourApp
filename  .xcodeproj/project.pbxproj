@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B87A074429F7A3FB00461F82 /* HomePage_weather_CollectionCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87A074329F7A3FB00461F82 /* HomePage_weather_CollectionCellCollectionViewCell.swift */; };
+		B87A074629F7A65C00461F82 /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87A074529F7A65C00461F82 /* HomePageViewController.swift */; };
 		B8AB523229F4AE780092519E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AB523129F4AE780092519E /* AppDelegate.swift */; };
 		B8AB523429F4AE780092519E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AB523329F4AE780092519E /* SceneDelegate.swift */; };
 		B8AB523629F4AE780092519E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AB523529F4AE780092519E /* ViewController.swift */; };
@@ -26,6 +28,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B87A074329F7A3FB00461F82 /* HomePage_weather_CollectionCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage_weather_CollectionCellCollectionViewCell.swift; sourceTree = "<group>"; };
+		B87A074529F7A65C00461F82 /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
 		B8AB522E29F4AE780092519E /* Final_App_FIT3178.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Final_App_FIT3178.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8AB523129F4AE780092519E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8AB523329F4AE780092519E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +43,7 @@
 		B8AB525A29F4BD800092519E /* FirebaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseController.swift; sourceTree = "<group>"; };
 		B8AB525D29F4BF2D0092519E /* DisplayMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayMessage.swift; sourceTree = "<group>"; };
 		B8AB526029F4C0430092519E /* logInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = logInViewController.swift; sourceTree = "<group>"; };
+		B8E9410129F63673005E465C /* Final_App_FIT3178.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Final_App_FIT3178.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +81,7 @@
 		B8AB523029F4AE780092519E /* Final_App_FIT3178 */ = {
 			isa = PBXGroup;
 			children = (
+				B8E9410129F63673005E465C /* Final_App_FIT3178.entitlements */,
 				B8AB523129F4AE780092519E /* AppDelegate.swift */,
 				B8AB523329F4AE780092519E /* SceneDelegate.swift */,
 				B8AB523529F4AE780092519E /* ViewController.swift */,
@@ -96,6 +102,8 @@
 			children = (
 				B8AB525429F4B0BD0092519E /* SignUpViewController.swift */,
 				B8AB526029F4C0430092519E /* logInViewController.swift */,
+				B87A074329F7A3FB00461F82 /* HomePage_weather_CollectionCellCollectionViewCell.swift */,
+				B87A074529F7A65C00461F82 /* HomePageViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -142,7 +150,7 @@
 					};
 				};
 			};
-			buildConfigurationList = B8AB522929F4AE770092519E /* Build configuration list for PBXProject "Final_App_FIT3178" */;
+			buildConfigurationList = B8AB522929F4AE770092519E /* Build configuration list for PBXProject " " */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -184,6 +192,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8AB525B29F4BD800092519E /* FirebaseController.swift in Sources */,
+				B87A074429F7A3FB00461F82 /* HomePage_weather_CollectionCellCollectionViewCell.swift in Sources */,
+				B87A074629F7A65C00461F82 /* HomePageViewController.swift in Sources */,
 				B8AB523629F4AE780092519E /* ViewController.swift in Sources */,
 				B8AB525E29F4BF2D0092519E /* DisplayMessage.swift in Sources */,
 				B8AB526129F4C0430092519E /* logInViewController.swift in Sources */,
@@ -334,6 +344,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Final_App_FIT3178/Final_App_FIT3178.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -361,6 +372,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Final_App_FIT3178/Final_App_FIT3178.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -386,7 +398,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B8AB522929F4AE770092519E /* Build configuration list for PBXProject "Final_App_FIT3178" */ = {
+		B8AB522929F4AE770092519E /* Build configuration list for PBXProject " " */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B8AB524029F4AE780092519E /* Debug */,

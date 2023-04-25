@@ -10,30 +10,32 @@ import UIKit
 import FirebaseAuth
 import GoogleSignIn
 import Firebase
+import CryptoKit
+import AuthenticationServices
 
 class FirebaseController {
+    
     var currentUser: FirebaseAuth.User?
+  
     
     
     func signInWithGoogle() async {
+        //tries to get an instance of Firebase, then accesing the clientID property of options
         guard let clientID = FirebaseApp.app()?.options.clientID else { return }
         
-        // Create Google Sign In configuration object.
+        // Create Google Sign In configuration object using clientID provided by Firebase SDK
+        //GIDConfiguration: a class provided by google sdk
         let config = GIDConfiguration(clientID: clientID)
+        //this singleton class GISignIn.sharedInstance
         GIDSignIn.sharedInstance.configuration = config
         
-//        guard let windowScene = await UIApplication.shared.connectedScenes.first as? UIWindowScene,
-//              let window = await windowScene.windows.first,
-//              let rootVC = await window.rootViewController else{
-//            print("There is no root view controller")
-//            return
-//        }
+        //ensure if user stops sign in, or finishes signing in, the go back to wherever they were in the app
         guard let rootVC = self.getTopMostViewController() else {
             print("There is no root view controller")
             return
         }
         
-        // Start the sign in flow!
+        // Start the sign in flow, using asynchronous
         do {
             let userAuthentication = try await GIDSignIn.sharedInstance.signIn(withPresenting:rootVC)
             let user = userAuthentication.user
@@ -41,7 +43,9 @@ class FirebaseController {
                 return
             }
             let accessToken = user.accessToken
+            //create a credential that can be used for firebase authentication
             let credential = GoogleAuthProvider.credential(withIDToken: idToken.tokenString, accessToken: accessToken.tokenString)
+            //truing to authenticate using firebase
             let result = try await Auth.auth().signIn(with: credential)
         }
         catch {
@@ -109,4 +113,8 @@ class FirebaseController {
 
             return topMostViewController
         }
+    
+    
+    
 }
+
