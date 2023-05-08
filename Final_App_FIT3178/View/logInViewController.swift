@@ -32,6 +32,12 @@ class logInViewController: UIViewController {
         view.addSubview(appleSignInButton)
         appleSignInButton.addTarget(self, action: #selector(startSignInWithAppleFlow), for: .touchUpInside)
       
+        Auth.auth().addStateDidChangeListener { auth, user in
+            //if user is signed in
+            if let user = user {
+                self.performSegue(withIdentifier: "successfulLogin", sender: self)
+            }
+        }
         // Do any additional setup after loading the view.
     }
     

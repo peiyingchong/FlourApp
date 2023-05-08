@@ -6,16 +6,22 @@
 //
 
 import UIKit
+import CoreLocation
 
 class HomePageViewController: UIViewController {
     
     
+    var locationManager = LocationManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
-
-        // Do any additional setup after loading the view.
+        if locationManager.userLocation == nil {
+            LocationRequestView()
+        }
+        else{
+            HomePageViewController()
+        }
     }
     
     func getImages() {

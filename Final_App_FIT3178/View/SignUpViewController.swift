@@ -33,6 +33,14 @@ class SignUpViewController: UIViewController {
         view.addSubview(appleSignInButton)
         appleSignInButton.addTarget(self, action: #selector(startSignInWithAppleFlow), for: .touchUpInside)
         
+        Auth.auth().addStateDidChangeListener { auth, user in
+            //if user is signed in
+            if let user = user {
+                self.performSegue(withIdentifier: "succesful_login_segue", sender: self)
+            }
+        }
+
+        
     }
     
     // with viewDidLayoutSubviews, it only take places after all the auto layout or auto resizing calculations on the views have been applied.
