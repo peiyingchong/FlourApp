@@ -7,12 +7,15 @@
 
 import Foundation
 import CoreLocation
+import UIKit
+import WeatherKit
 
-class LocationManager:NSObject, ObservableObject {
+class LocationManager:NSObject, CLLocationManagerDelegate {
+    
+    var delegate: LocationDelegate?
     //manages our location services such as requesting user location
     
     //conforms to theCLLocationManager Delegate
-    
     static let shared = LocationManager()
     
     //to request location services from the user
@@ -20,6 +23,8 @@ class LocationManager:NSObject, ObservableObject {
     
     //if user location is not allowed, the request screen will pop up. If user allows, then we want to dismiss the screen and take the another scrren
     @Published var userLocation: CLLocation?
+    
+    
     
     override init(){
         super.init()
@@ -31,15 +36,11 @@ class LocationManager:NSObject, ObservableObject {
         manager.requestWhenInUseAuthorization()
     }
     
-}
-extension LocationManager: CLLocationManagerDelegate{
-    
-    //monitors the permission status
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
             
         case .notDetermined:
-            print("DEBUG: Not determined")
+            print("DEBUG: notDetermined")
         case .restricted:
             print("DEBUG: Restricted")
         case .denied:
@@ -47,7 +48,7 @@ extension LocationManager: CLLocationManagerDelegate{
         case .authorizedAlways:
             print("DEBUG: Auth always")
         case .authorizedWhenInUse:
-            print("DEBUG: Auth when in use")
+            print("DEBUG: Auth in use")
         @unknown default:
             break
         }
@@ -58,13 +59,22 @@ extension LocationManager: CLLocationManagerDelegate{
         //which is the most up-to-date location position.
         guard let location = locations.last else {return}
         self.userLocation = location
-        
         let currentLocation = location.coordinate
         let latitude = currentLocation.latitude
         print("latitude: \(latitude)" )
         let longitude = currentLocation.longitude
         print("longitude: \(longitude)" )
+        self.delegate?.didUpdateLocation(latitude: latitude, longitude: longitude)
+        
+
     }
     
     
+    
+    
+    
+}
+
+protocol LocationDelegate: NSObject {
+    func didUpdateLocation(latitude: Double, longitude: Double)
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WYy-BY-cxQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xQL-XU-JkH">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
@@ -188,6 +188,104 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uMS-5X-lTf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1085" y="773"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="xqZ-5U-E3I">
+            <objects>
+                <viewController id="YG2-Lm-TB2" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="j7b-mB-MtH">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="gFZ-oC-4CK"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Tlu-Nm-xbh"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WNo-B2-5NC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="295" y="1446"/>
+        </scene>
+        <!--Calculator View Controller-->
+        <scene sceneID="ER1-2x-9le">
+            <objects>
+                <viewController id="PI2-Hd-tso" customClass="CalculatorViewController" customModule="Final_App_FIT3178" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="toH-kw-B2o">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter temperature of the following" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2uR-ds-V3U">
+                                <rect key="frame" x="20" y="50" width="353" height="64"/>
+                                <fontDescription key="fontDescription" name="STIXTwoText" family="STIX Two Text" pointSize="32"/>
+                                <color key="textColor" red="0.61399147720000002" green="0.40267857470000001" blue="0.17937515400000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flour:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zmk-Ex-xV2">
+                                <rect key="frame" x="20" y="144" width="82.666666666666671" height="32"/>
+                                <fontDescription key="fontDescription" name="STIXTwoText" family="STIX Two Text" pointSize="32"/>
+                                <color key="textColor" red="0.61399147720000002" green="0.40267857470000001" blue="0.17937515400000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ybm-hB-Vec">
+                                <rect key="frame" x="20" y="216" width="353" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="4tH-QJ-9cv"/>
+                                </constraints>
+                                <buttonConfiguration key="configuration" style="filled" title="Tap to get water temperature" cornerStyle="large">
+                                    <fontDescription key="titleFontDescription" name="STIXTwoMath-Regular" family="STIX Two Math" pointSize="18"/>
+                                    <color key="baseBackgroundColor" red="0.61399147720000002" green="0.40267857470000001" blue="0.17937515400000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="calculateWaterTemp:" destination="PI2-Hd-tso" eventType="touchUpInside" id="NQz-hQ-jNb"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xG1-YP-jc2">
+                                <rect key="frame" x="20" y="543" width="353" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="ypw-hx-D2Q"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="STIXTwoText" family="STIX Two Text" pointSize="32"/>
+                                <color key="textColor" red="0.61399147720000002" green="0.40267857470000001" blue="0.17937515400000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zci-sG-AX6">
+                                <rect key="frame" x="122.66666666666667" y="134" width="250.33333333333331" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="qzc-BG-eIt"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="v4Z-M6-eKj"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="2uR-ds-V3U" firstAttribute="top" secondItem="v4Z-M6-eKj" secondAttribute="top" constant="50" id="2SL-XL-I7q"/>
+                            <constraint firstItem="Zci-sG-AX6" firstAttribute="top" secondItem="2uR-ds-V3U" secondAttribute="bottom" constant="20" id="5J0-WS-mNL"/>
+                            <constraint firstItem="xG1-YP-jc2" firstAttribute="leading" secondItem="v4Z-M6-eKj" secondAttribute="leading" constant="20" id="74m-o0-LnG"/>
+                            <constraint firstItem="2uR-ds-V3U" firstAttribute="leading" secondItem="v4Z-M6-eKj" secondAttribute="leading" constant="20" id="9MQ-Xk-63C"/>
+                            <constraint firstItem="Ybm-hB-Vec" firstAttribute="leading" secondItem="v4Z-M6-eKj" secondAttribute="leading" constant="20" id="DVy-pR-oE5"/>
+                            <constraint firstItem="v4Z-M6-eKj" firstAttribute="trailing" secondItem="Ybm-hB-Vec" secondAttribute="trailing" constant="20" id="Dby-51-aUF"/>
+                            <constraint firstItem="Zmk-Ex-xV2" firstAttribute="top" secondItem="2uR-ds-V3U" secondAttribute="bottom" constant="30" id="Ld3-ch-BV5"/>
+                            <constraint firstItem="v4Z-M6-eKj" firstAttribute="trailing" secondItem="2uR-ds-V3U" secondAttribute="trailing" constant="20" id="Mt5-DP-oqS"/>
+                            <constraint firstItem="v4Z-M6-eKj" firstAttribute="bottom" secondItem="xG1-YP-jc2" secondAttribute="bottom" constant="100" id="Nld-oa-mzT"/>
+                            <constraint firstItem="Ybm-hB-Vec" firstAttribute="top" secondItem="Zmk-Ex-xV2" secondAttribute="bottom" constant="40" id="VkO-KM-kmD"/>
+                            <constraint firstItem="Zci-sG-AX6" firstAttribute="leading" secondItem="Zmk-Ex-xV2" secondAttribute="trailing" constant="20" id="fgn-VL-i9w"/>
+                            <constraint firstItem="v4Z-M6-eKj" firstAttribute="trailing" secondItem="xG1-YP-jc2" secondAttribute="trailing" constant="20" id="hZA-kK-Qbv"/>
+                            <constraint firstItem="v4Z-M6-eKj" firstAttribute="trailing" secondItem="Zci-sG-AX6" secondAttribute="trailing" constant="20" id="icr-JC-NkW"/>
+                            <constraint firstItem="Zmk-Ex-xV2" firstAttribute="leading" secondItem="v4Z-M6-eKj" secondAttribute="leading" constant="20" id="kMv-dA-mn1"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="MdA-U2-Gah"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="flourInputText" destination="Zci-sG-AX6" id="nZQ-BN-Pzk"/>
+                        <outlet property="waterTempOutput" destination="xG1-YP-jc2" id="BGh-bg-Dmn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8wt-RV-yqP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2781" y="1466"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="adR-LA-E9h">
@@ -548,11 +646,36 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NIL-3S-b6e">
+                                <rect key="frame" x="20" y="648" width="353" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="QU1-jU-ocO"/>
+                                </constraints>
+                                <buttonConfiguration key="configuration" style="filled" title="Calculate" cornerStyle="large">
+                                    <fontDescription key="titleFontDescription" name="STIXTwoMath-Regular" family="STIX Two Math" pointSize="18"/>
+                                    <color key="baseForegroundColor" red="0.61399147720000002" green="0.40267857470000001" blue="0.17937515400000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <color key="baseBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="allowLocationButton:" destination="WYy-BY-cxQ" eventType="touchUpInside" id="9A2-W1-9Mi"/>
+                                    <action selector="logInButtonTapped:" destination="5mo-lH-9ia" eventType="touchUpInside" id="sSd-SP-YJk"/>
+                                    <action selector="toCalculatorPage:" destination="xQL-XU-JkH" eventType="touchUpInside" id="vsA-hD-8HT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="pGf-tV-aFS"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="pGf-tV-aFS" firstAttribute="trailing" secondItem="NIL-3S-b6e" secondAttribute="trailing" constant="20" id="GWc-K8-7xf"/>
+                            <constraint firstItem="NIL-3S-b6e" firstAttribute="leading" secondItem="pGf-tV-aFS" secondAttribute="leading" constant="20" id="QJg-Dp-aIO"/>
+                            <constraint firstItem="pGf-tV-aFS" firstAttribute="bottom" secondItem="NIL-3S-b6e" secondAttribute="bottom" constant="150" id="ZXf-OO-C1V"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="GKG-zw-zlA"/>
+                    <connections>
+                        <segue destination="WYy-BY-cxQ" kind="show" identifier="requestLocationAccessSegue" id="8MQ-sf-BKm"/>
+                        <segue destination="PI2-Hd-tso" kind="showDetail" identifier="calculatorSegue" id="8a8-2O-tPh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rlq-Iq-S7a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -563,7 +686,7 @@
             <objects>
                 <viewController id="WYy-BY-cxQ" customClass="LocationRequestView" customModule="Final_App_FIT3178" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wFa-7h-IdR">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JWv-d1-LER">
@@ -573,13 +696,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="diS-Ei-Q6w">
-                                <rect key="frame" x="20" y="79" width="353" height="300"/>
+                                <rect key="frame" x="20" y="20" width="353" height="300"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="EcU-S0-Klg"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable your location services to improve your baking journey" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v8H-Zi-VLe">
-                                <rect key="frame" x="20" y="399" width="353" height="81"/>
+                                <rect key="frame" x="20" y="340" width="353" height="81"/>
                                 <fontDescription key="fontDescription" name="STIXTwoMath-Regular" family="STIX Two Math" pointSize="27"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -591,7 +714,7 @@
                                 <buttonConfiguration key="configuration" style="plain"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MA9-rf-UVF">
-                                <rect key="frame" x="20" y="690" width="353" height="44"/>
+                                <rect key="frame" x="20" y="714" width="353" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="hce-BR-oaJ"/>
                                 </constraints>
@@ -606,7 +729,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I4o-u8-28E">
-                                <rect key="frame" x="20" y="754" width="353" height="44"/>
+                                <rect key="frame" x="20" y="778" width="353" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Kq0-eB-Fyh"/>
                                 </constraints>
@@ -616,7 +739,7 @@
                                     <color key="baseBackgroundColor" red="0.61399147720000002" green="0.40267857470000001" blue="0.17937515400000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="maybeLaterButton:" destination="WYy-BY-cxQ" eventType="touchUpInside" id="rAB-ii-kTW"/>
+                                    <action selector="maybeLaterButton:" destination="WYy-BY-cxQ" eventType="touchUpInside" id="WO5-3W-Qe4"/>
                                     <segue destination="xQL-XU-JkH" kind="show" identifier="maybeLaterSegue" id="qBf-0I-anE"/>
                                 </connections>
                             </button>
@@ -640,10 +763,11 @@
                             <constraint firstItem="NYo-KK-GOF" firstAttribute="trailing" secondItem="I4o-u8-28E" secondAttribute="trailing" constant="20" id="w3T-b2-Rr5"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="sql-6M-g71"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xgc-Co-0UO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3632.8244274809158" y="772.53521126760563"/>
+            <point key="canvasLocation" x="4559.5419847328239" y="772.53521126760563"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

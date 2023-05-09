@@ -34,7 +34,9 @@ class logInViewController: UIViewController {
       
         Auth.auth().addStateDidChangeListener { auth, user in
             //if user is signed in
-            if let user = user {
+            if let _ = user {
+                FirebaseController().currentUser = user;
+                print("SuccessfulLogin")
                 self.performSegue(withIdentifier: "successfulLogin", sender: self)
             }
         }

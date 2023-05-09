@@ -47,6 +47,7 @@ class FirebaseController {
             let credential = GoogleAuthProvider.credential(withIDToken: idToken.tokenString, accessToken: accessToken.tokenString)
             //truing to authenticate using firebase
             let result = try await Auth.auth().signIn(with: credential)
+            self.currentUser = Auth.auth().currentUser
         }
         catch {
             print(error.localizedDescription)
@@ -84,6 +85,7 @@ class FirebaseController {
 
             }
             else{
+                self.currentUser = Auth.auth().currentUser
                 return
             }
         }
@@ -98,6 +100,7 @@ class FirebaseController {
                         print(error!.localizedDescription)}
                 }
                 else{
+                    self.currentUser = Auth.auth().currentUser
                     return
                    
                 }

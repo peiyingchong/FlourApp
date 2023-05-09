@@ -18,6 +18,12 @@ class LocationRequestView: UIViewController {
     
     @IBAction func allowLocationButton(_ sender: Any) {
         LocationManager.shared.requestLocation()
+        
+    }
+    
+    
+    @IBAction func maybeLaterButton(_ sender: Any) {
+        self.performSegue(withIdentifier: "maybeLaterSegue", sender: self)
     }
     
     

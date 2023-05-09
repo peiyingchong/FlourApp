@@ -11,6 +11,7 @@
 		B87A074629F7A65C00461F82 /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87A074529F7A65C00461F82 /* HomePageViewController.swift */; };
 		B89FB09F2A08F613008EFCDF /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89FB09E2A08F613008EFCDF /* LocationManager.swift */; };
 		B89FB0A32A08FDE1008EFCDF /* LocationRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89FB0A22A08FDE1008EFCDF /* LocationRequestView.swift */; };
+		B89FB0A52A09E248008EFCDF /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89FB0A42A09E248008EFCDF /* CalculatorViewController.swift */; };
 		B8A1B4412A07BD14008D9EEE /* Search_Recipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A1B4402A07BD14008D9EEE /* Search_Recipes.swift */; };
 		B8A1B4432A07BE2E008D9EEE /* RecipeAnalysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A1B4422A07BE2E008D9EEE /* RecipeAnalysis.swift */; };
 		B8A1B4452A07C037008D9EEE /* RecipeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A1B4442A07C037008D9EEE /* RecipeList.swift */; };
@@ -37,6 +38,7 @@
 		B87A074529F7A65C00461F82 /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
 		B89FB09E2A08F613008EFCDF /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		B89FB0A22A08FDE1008EFCDF /* LocationRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRequestView.swift; sourceTree = "<group>"; };
+		B89FB0A42A09E248008EFCDF /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
 		B8A1B4402A07BD14008D9EEE /* Search_Recipes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search_Recipes.swift; sourceTree = "<group>"; };
 		B8A1B4422A07BE2E008D9EEE /* RecipeAnalysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeAnalysis.swift; sourceTree = "<group>"; };
 		B8A1B4442A07C037008D9EEE /* RecipeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeList.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				B87A074329F7A3FB00461F82 /* HomePage_weather_CollectionCellCollectionViewCell.swift */,
 				B87A074529F7A65C00461F82 /* HomePageViewController.swift */,
 				B89FB0A22A08FDE1008EFCDF /* LocationRequestView.swift */,
+				B89FB0A42A09E248008EFCDF /* CalculatorViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 				B8AB526129F4C0430092519E /* logInViewController.swift in Sources */,
 				B8A1B4412A07BD14008D9EEE /* Search_Recipes.swift in Sources */,
 				B89FB0A32A08FDE1008EFCDF /* LocationRequestView.swift in Sources */,
+				B89FB0A52A09E248008EFCDF /* CalculatorViewController.swift in Sources */,
 				B8AB523229F4AE780092519E /* AppDelegate.swift in Sources */,
 				B8AB525529F4B0BD0092519E /* SignUpViewController.swift in Sources */,
 				B8AB523429F4AE780092519E /* SceneDelegate.swift in Sources */,

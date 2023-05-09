@@ -36,6 +36,7 @@ class SignUpViewController: UIViewController {
         Auth.auth().addStateDidChangeListener { auth, user in
             //if user is signed in
             if let user = user {
+                FirebaseController().currentUser = user;
                 self.performSegue(withIdentifier: "succesful_login_segue", sender: self)
             }
         }
