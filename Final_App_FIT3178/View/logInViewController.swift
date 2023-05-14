@@ -38,6 +38,8 @@ class logInViewController: UIViewController {
                 FirebaseController().currentUser = user;
                 print("SuccessfulLogin")
                 self.performSegue(withIdentifier: "successfulLogin", sender: self)
+                print("SuccessfulLogin")
+
             }
         }
         // Do any additional setup after loading the view.

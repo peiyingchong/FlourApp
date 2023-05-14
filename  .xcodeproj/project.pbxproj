@@ -7,14 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B87A074429F7A3FB00461F82 /* HomePage_weather_CollectionCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87A074329F7A3FB00461F82 /* HomePage_weather_CollectionCellCollectionViewCell.swift */; };
+		B861A6522A106CA000D5D753 /* IngredientListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B861A6512A106CA000D5D753 /* IngredientListTableViewController.swift */; };
+		B861A6562A106E2200D5D753 /* RecipeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B861A6552A106E2200D5D753 /* RecipeInfo.swift */; };
+		B861A66C2A10ED3B00D5D753 /* SearchRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B861A66B2A10ED3B00D5D753 /* SearchRecipe.swift */; };
+		B861A6702A10EF9200D5D753 /* RecipeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B861A66F2A10EF9200D5D753 /* RecipeData.swift */; };
 		B87A074629F7A65C00461F82 /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87A074529F7A65C00461F82 /* HomePageViewController.swift */; };
 		B89FB09F2A08F613008EFCDF /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89FB09E2A08F613008EFCDF /* LocationManager.swift */; };
 		B89FB0A32A08FDE1008EFCDF /* LocationRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89FB0A22A08FDE1008EFCDF /* LocationRequestView.swift */; };
 		B89FB0A52A09E248008EFCDF /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89FB0A42A09E248008EFCDF /* CalculatorViewController.swift */; };
-		B8A1B4412A07BD14008D9EEE /* Search_Recipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A1B4402A07BD14008D9EEE /* Search_Recipes.swift */; };
-		B8A1B4432A07BE2E008D9EEE /* RecipeAnalysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A1B4422A07BE2E008D9EEE /* RecipeAnalysis.swift */; };
-		B8A1B4452A07C037008D9EEE /* RecipeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A1B4442A07C037008D9EEE /* RecipeList.swift */; };
+		B8A6A96D2A0E13AE00717CA5 /* Weather_Temp_data.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A6A96C2A0E13AE00717CA5 /* Weather_Temp_data.swift */; };
 		B8AB523229F4AE780092519E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AB523129F4AE780092519E /* AppDelegate.swift */; };
 		B8AB523429F4AE780092519E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AB523329F4AE780092519E /* SceneDelegate.swift */; };
 		B8AB523629F4AE780092519E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AB523529F4AE780092519E /* ViewController.swift */; };
@@ -31,17 +32,21 @@
 		B8AB525B29F4BD800092519E /* FirebaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AB525A29F4BD800092519E /* FirebaseController.swift */; };
 		B8AB525E29F4BF2D0092519E /* DisplayMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AB525D29F4BF2D0092519E /* DisplayMessage.swift */; };
 		B8AB526129F4C0430092519E /* logInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AB526029F4C0430092519E /* logInViewController.swift */; };
+		B8F46B212A0A628B006E5894 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F46B202A0A628B006E5894 /* TableViewController.swift */; };
+		B8F46B232A0A63F6006E5894 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F46B222A0A63F6006E5894 /* CollectionViewCell.swift */; };
+		B8F46B252A0AFAC2006E5894 /* TileCollectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F46B242A0AFAC2006E5894 /* TileCollectionCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B87A074329F7A3FB00461F82 /* HomePage_weather_CollectionCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage_weather_CollectionCellCollectionViewCell.swift; sourceTree = "<group>"; };
+		B861A6512A106CA000D5D753 /* IngredientListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientListTableViewController.swift; sourceTree = "<group>"; };
+		B861A6552A106E2200D5D753 /* RecipeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeInfo.swift; sourceTree = "<group>"; };
+		B861A66B2A10ED3B00D5D753 /* SearchRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRecipe.swift; sourceTree = "<group>"; };
+		B861A66F2A10EF9200D5D753 /* RecipeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeData.swift; sourceTree = "<group>"; };
 		B87A074529F7A65C00461F82 /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
 		B89FB09E2A08F613008EFCDF /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		B89FB0A22A08FDE1008EFCDF /* LocationRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRequestView.swift; sourceTree = "<group>"; };
 		B89FB0A42A09E248008EFCDF /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
-		B8A1B4402A07BD14008D9EEE /* Search_Recipes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search_Recipes.swift; sourceTree = "<group>"; };
-		B8A1B4422A07BE2E008D9EEE /* RecipeAnalysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeAnalysis.swift; sourceTree = "<group>"; };
-		B8A1B4442A07C037008D9EEE /* RecipeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeList.swift; sourceTree = "<group>"; };
+		B8A6A96C2A0E13AE00717CA5 /* Weather_Temp_data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather_Temp_data.swift; sourceTree = "<group>"; };
 		B8AB522E29F4AE780092519E /* Final_App_FIT3178.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Final_App_FIT3178.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8AB523129F4AE780092519E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8AB523329F4AE780092519E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +61,9 @@
 		B8AB525D29F4BF2D0092519E /* DisplayMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayMessage.swift; sourceTree = "<group>"; };
 		B8AB526029F4C0430092519E /* logInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = logInViewController.swift; sourceTree = "<group>"; };
 		B8E9410129F63673005E465C /* Final_App_FIT3178.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Final_App_FIT3178.entitlements; sourceTree = "<group>"; };
+		B8F46B202A0A628B006E5894 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		B8F46B222A0A63F6006E5894 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		B8F46B242A0AFAC2006E5894 /* TileCollectionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileCollectionCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,9 +85,10 @@
 		B8A1B43B2A03C75E008D9EEE /* API */ = {
 			isa = PBXGroup;
 			children = (
-				B8A1B4402A07BD14008D9EEE /* Search_Recipes.swift */,
-				B8A1B4422A07BE2E008D9EEE /* RecipeAnalysis.swift */,
-				B8A1B4442A07C037008D9EEE /* RecipeList.swift */,
+				B8A6A96C2A0E13AE00717CA5 /* Weather_Temp_data.swift */,
+				B861A6552A106E2200D5D753 /* RecipeInfo.swift */,
+				B861A66B2A10ED3B00D5D753 /* SearchRecipe.swift */,
+				B861A66F2A10EF9200D5D753 /* RecipeData.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -126,10 +135,13 @@
 			children = (
 				B8AB525429F4B0BD0092519E /* SignUpViewController.swift */,
 				B8AB526029F4C0430092519E /* logInViewController.swift */,
-				B87A074329F7A3FB00461F82 /* HomePage_weather_CollectionCellCollectionViewCell.swift */,
 				B87A074529F7A65C00461F82 /* HomePageViewController.swift */,
+				B8F46B202A0A628B006E5894 /* TableViewController.swift */,
+				B8F46B222A0A63F6006E5894 /* CollectionViewCell.swift */,
+				B8F46B242A0AFAC2006E5894 /* TileCollectionCollectionViewCell.swift */,
 				B89FB0A22A08FDE1008EFCDF /* LocationRequestView.swift */,
 				B89FB0A42A09E248008EFCDF /* CalculatorViewController.swift */,
+				B861A6512A106CA000D5D753 /* IngredientListTableViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -218,19 +230,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8AB525B29F4BD800092519E /* FirebaseController.swift in Sources */,
-				B87A074429F7A3FB00461F82 /* HomePage_weather_CollectionCellCollectionViewCell.swift in Sources */,
-				B8A1B4432A07BE2E008D9EEE /* RecipeAnalysis.swift in Sources */,
 				B87A074629F7A65C00461F82 /* HomePageViewController.swift in Sources */,
+				B8F46B252A0AFAC2006E5894 /* TileCollectionCollectionViewCell.swift in Sources */,
+				B8A6A96D2A0E13AE00717CA5 /* Weather_Temp_data.swift in Sources */,
 				B8AB523629F4AE780092519E /* ViewController.swift in Sources */,
-				B8A1B4452A07C037008D9EEE /* RecipeList.swift in Sources */,
+				B861A6702A10EF9200D5D753 /* RecipeData.swift in Sources */,
+				B861A6562A106E2200D5D753 /* RecipeInfo.swift in Sources */,
 				B8AB525E29F4BF2D0092519E /* DisplayMessage.swift in Sources */,
 				B8AB526129F4C0430092519E /* logInViewController.swift in Sources */,
-				B8A1B4412A07BD14008D9EEE /* Search_Recipes.swift in Sources */,
 				B89FB0A32A08FDE1008EFCDF /* LocationRequestView.swift in Sources */,
 				B89FB0A52A09E248008EFCDF /* CalculatorViewController.swift in Sources */,
+				B8F46B232A0A63F6006E5894 /* CollectionViewCell.swift in Sources */,
+				B8F46B212A0A628B006E5894 /* TableViewController.swift in Sources */,
 				B8AB523229F4AE780092519E /* AppDelegate.swift in Sources */,
 				B8AB525529F4B0BD0092519E /* SignUpViewController.swift in Sources */,
 				B8AB523429F4AE780092519E /* SceneDelegate.swift in Sources */,
+				B861A66C2A10ED3B00D5D753 /* SearchRecipe.swift in Sources */,
+				B861A6522A106CA000D5D753 /* IngredientListTableViewController.swift in Sources */,
 				B89FB09F2A08F613008EFCDF /* LocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

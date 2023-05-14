@@ -8,10 +8,13 @@
 import UIKit
 import CoreLocation
 
-class HomePageViewController: UIViewController {
+class HomePageViewController: UIViewController{
     
     private let locationManager = CLLocationManager()
     
+    var newRecipes = [RecipeData]()
+    
+    let url = "https://api.spoonacular.com/recipes/complexSearch?query=bread&apiKey=75fb6b5ec943413cb3932877813f3226"
     
     @IBAction func toCalculatorPage(_ sender: Any) {
         self.performSegue(withIdentifier: "calculatorSegue", sender: self)
@@ -21,38 +24,66 @@ class HomePageViewController: UIViewController {
         super.viewDidLoad()
         
         let locationManager = CLLocationManager()
-        switch CLLocationManager.authorizationStatus() {
-        case .authorizedAlways, .authorizedWhenInUse:
-            // Location access is enabled, perform segue to calculator
-            DispatchQueue.main.async {
-                self.performSegue(withIdentifier: "calculatorSegue", sender: self)
+        DispatchQueue.global().async {
+            if CLLocationManager.locationServicesEnabled() {
+                switch locationManager.authorizationStatus {
+                    case .notDetermined, .restricted:
+                    LocationManager.shared.requestLocation()
+//                        DispatchQueue.main.async {
+//                            self.performSegue(withIdentifier: "requestLocationAccessSegue", sender: self)
+//                        }
+                    case .denied:
+                        print("denied")
+                    case .authorizedAlways, .authorizedWhenInUse:
+                        DispatchQueue.main.async {
+                            self.dismiss(animated: true, completion: nil)
+                        }
+                    @unknown default:
+                        break
+                }
+            } else {
+                print("Location services are not enabled")
             }
-        case .denied, .restricted:
-            // Location access is denied or restricted, show message
-            DispatchQueue.main.async {
-                let alert = UIAlertController(title: "Location access denied", message: "Please enable location access in Settings.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default))
-                self.present(alert, animated: true)
+        }
+        
+        Task{
+            //check for valid url string
+            guard let urlReq = URL(string:url) else{
+                print("Invalid URL")
+                return
             }
-        case .notDetermined:
-            // Location access is not determined, request access
-            DispatchQueue.main.async {
-                self.performSegue(withIdentifier: "requestLocationAccessSegue", sender: self)
-            }
-            
-            
+            //api request
+            await getRecipes(url: urlReq)
         }
         
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    
+    func getRecipes(url: URL) async{
+        do{
+            let(data, _) = try await URLSession.shared.data(for: URLRequest(url: url))
+            //create a JSONDecoder instance
+            let decoder = JSONDecoder()
+            
+            //Because the data returned is a JsonObject, and the field wanted is an array of Json Object
+            let resultContainer = try decoder.decode(SearchRecipe.self, from: data)
+            
+            if let recipe = resultContainer.recipes{
+                for item in recipe {
+                    newRecipes.append(item)
+                    print(item.title)
+                    print(item.id)
+                    print(item.image)
+                    print(item.imageType)
+                }
+            }
+        }
+        catch let error{
+            print(error)
+        }
     }
-    */
+    
+    
+
 
 }

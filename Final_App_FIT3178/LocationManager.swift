@@ -10,7 +10,7 @@ import CoreLocation
 import UIKit
 import WeatherKit
 
-class LocationManager:NSObject, CLLocationManagerDelegate {
+class LocationManager: NSObject, CLLocationManagerDelegate {
     
     var delegate: LocationDelegate?
     //manages our location services such as requesting user location
@@ -24,6 +24,9 @@ class LocationManager:NSObject, CLLocationManagerDelegate {
     //if user location is not allowed, the request screen will pop up. If user allows, then we want to dismiss the screen and take the another scrren
     @Published var userLocation: CLLocation?
     
+    
+    public var latitude = 37.0902
+    public var longitude = 95.7129
     
     
     override init(){
@@ -46,9 +49,9 @@ class LocationManager:NSObject, CLLocationManagerDelegate {
         case .denied:
             print("DEBUG: Denied")
         case .authorizedAlways:
-            print("DEBUG: Auth always")
+            print("DEBUG: authorizedAlways")
         case .authorizedWhenInUse:
-            print("DEBUG: Auth in use")
+            print("DEBUG: authorizedWhenInUse")
         @unknown default:
             break
         }
@@ -64,6 +67,9 @@ class LocationManager:NSObject, CLLocationManagerDelegate {
         print("latitude: \(latitude)" )
         let longitude = currentLocation.longitude
         print("longitude: \(longitude)" )
+        self.latitude = latitude
+        self.longitude = longitude
+        
         self.delegate?.didUpdateLocation(latitude: latitude, longitude: longitude)
         
 

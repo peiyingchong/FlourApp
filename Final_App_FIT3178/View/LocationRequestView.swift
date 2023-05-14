@@ -6,12 +6,13 @@
 //
 
 import UIKit
+import CoreLocation
+
 
 class LocationRequestView: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         // Do any additional setup after loading the view.
     }
@@ -19,15 +20,10 @@ class LocationRequestView: UIViewController {
     @IBAction func allowLocationButton(_ sender: Any) {
         LocationManager.shared.requestLocation()
         
+           
     }
     
     
-    @IBAction func maybeLaterButton(_ sender: Any) {
-        self.performSegue(withIdentifier: "maybeLaterSegue", sender: self)
-    }
-    
-    
-
     /*
     // MARK: - Navigation
 
