@@ -11,8 +11,10 @@ class TableViewController: UIViewController , UITableViewDataSource{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(tableView)
+        
         tableView.dataSource = self
+        
+        tableView.allowsMultipleSelectionDuringEditing = true
 
         // Do any additional setup after loading the view.
     }
@@ -28,10 +30,11 @@ class TableViewController: UIViewController , UITableViewDataSource{
     }
     //ask the data source for a cell to insert in a particular location of the tableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CollectionViewCell.identifier, for: indexPath) as? CollectionViewCell else { fatalError() } 
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CollectionViewCell.identifier, for: indexPath) as? CollectionViewCell else { fatalError() }
+        
         return cell
     }
-
+    
     /*
     // MARK: - Navigation
 

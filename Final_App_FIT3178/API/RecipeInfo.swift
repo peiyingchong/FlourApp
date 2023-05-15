@@ -15,7 +15,13 @@ class RecipeInfo: NSObject, Decodable {
     var unitShort: String?
     
     struct IngredientList: Decodable {
-        let extendedIngredients: [AnIngredient]
+        var servings: Double?
+        var aggregateLikes: Int?
+        var healthScore: Double?
+        var readyInMinutes: Int?
+        var summary: String?
+        var extendedIngredients: [AnIngredient]?
+        var winePairing: Wines?
     }
     
     struct AnIngredient: Decodable {
@@ -32,4 +38,8 @@ class RecipeInfo: NSObject, Decodable {
         var unitShort: String
     }
     
+    struct Wines:Decodable{
+        var pairedWines: [String]?
+        var pairingText: String?
+    }
 }

@@ -16,6 +16,8 @@ class IngredientListTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.allowsMultipleSelection = true
+
         Task{
             //check for valid url string
             guard let url = URL(string: "https://api.spoonacular.com/recipes/716429/information?includeNutrition=false&apiKey=75fb6b5ec943413cb3932877813f3226") else{
@@ -66,8 +68,14 @@ class IngredientListTableViewController: UITableViewController {
 
         return cell
     }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at:indexPath)?.accessoryType = .checkmark
+    }
     
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.accessoryType = .none
 
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -122,14 +130,16 @@ class IngredientListTableViewController: UITableViewController {
             
             //Because the data returned is a JsonObject, and the field wanted is an array of Json Object
             let recipeData = try decoder.decode(RecipeInfo.IngredientList.self, from: data)
-            
-            //the array of JsonObjects
-            for ingredient in recipeData.extendedIngredients{
-                let recipeInfo = RecipeInfo()
-                recipeInfo.name = ingredient.name
-                recipeInfo.amount = ingredient.measures.metric.amount
-                recipeInfo.unitShort = ingredient.measures.metric.unitShort
-                listOfIngredients.append(recipeInfo)
+            if let ingredientList = recipeData.extendedIngredients{
+                //the array of JsonObjects
+                for ingredient in ingredientList{
+                    let recipeInfo = RecipeInfo()
+                    recipeInfo.name = ingredient.name
+                    recipeInfo.amount = ingredient.measures.metric.amount
+                    recipeInfo.unitShort = ingredient.measures.metric.unitShort
+                    listOfIngredients.append(recipeInfo)
+                }
+                
             }
         }
         catch let error{
