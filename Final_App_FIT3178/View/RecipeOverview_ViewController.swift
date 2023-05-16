@@ -7,14 +7,14 @@
 
 import UIKit
 
-class RecipeOverview_ViewController: UIViewController {
-
+class RecipeOverview_ViewController: UIViewController{
+    
+    
     var id: Int?
     var titled: String?
     var imageUrl: String?
     
-
-
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var servings: UILabel!
     
@@ -33,17 +33,23 @@ class RecipeOverview_ViewController: UIViewController {
     
     @IBOutlet weak var wineList: UITextView!
     
-    @IBAction func bakingSegue(_ sender: Any) {
+    
+    @IBAction func startBaking(_ sender: Any) {
+        self.performSegue(withIdentifier: "listSegue", sender: self)
         
     }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         guard let id = self.id else {
             return
         }
-        let url = "https://api.spoonacular.com/recipes/\(id)/information?includeNutrition=false&apiKey=75fb6b5ec943413cb3932877813f3226"
+        let url = "https://api.spoonacular.com/recipes/\(id)/information?includeNutrition=false&apiKey=8a20103f31cd4cd49daadeeb8dfc99d8"
+//        let url = "https://api.spoonacular.com/recipes/\(id)/information?includeNutrition=false&apiKey=75fb6b5ec943413cb3932877813f3226"
         Task{
             //check for valid url string
             guard let urlReq = URL(string:url) else{
@@ -63,97 +69,41 @@ class RecipeOverview_ViewController: UIViewController {
             //create a JSONDecoder instance
             let decoder = JSONDecoder()
             
-        
+            
             let recipeData = try decoder.decode(RecipeInfo.IngredientList.self, from: data)
             DispatchQueue.main.async {
-                        self.titleLabel.text = self.titled ?? ""
-                        self.totalLikes.text = String(recipeData.aggregateLikes ?? 0)
-                        self.healthScore.text = String(recipeData.healthScore ?? 0)
-                        self.servings.text = String(recipeData.servings ?? 0)
-                        self.timeLabel.text = String(recipeData.readyInMinutes ?? 0)
-                        self.titleLabel.text = self.titled ?? ""
-                        self.wineList.text = recipeData.winePairing?.pairingText ?? ""
-
-                        if let summary = recipeData.summary {
-                            let htmlString = summary
-                            if let plainText = self.convertHTMLToPlainText(htmlString: htmlString) {
-                                self.summaryView.text = plainText
-                            } else {
-                                print("Failed to convert HTML to plain text.")
-                            }
-                        }
-
-                        if let url = self.imageUrl {
-                            let url = URL(string: url)
-                            URLSession.shared.dataTask(with: url!) { (data, response, error) in
-                                guard let data = data, let image = UIImage(data: data) else {
-                                    return
-                                }
-                                DispatchQueue.main.async {
-                                    self.imageView.image = image
-                                }
-                            }.resume()
-                        }
+                self.titleLabel.text = self.titled ?? ""
+                self.totalLikes.text = String(recipeData.aggregateLikes ?? 0)
+                self.healthScore.text = String(recipeData.healthScore ?? 0)
+                self.servings.text = String(recipeData.servings ?? 0)
+                self.timeLabel.text = String(recipeData.readyInMinutes ?? 0)
+                self.titleLabel.text = self.titled ?? ""
+                self.wineList.text = recipeData.winePairing?.pairingText ?? ""
+                
+                if let summary = recipeData.summary {
+                    let htmlString = summary
+                    if let plainText = self.convertHTMLToPlainText(htmlString: htmlString) {
+                        self.summaryView.text = plainText
+                    } else {
+                        print("Failed to convert HTML to plain text.")
                     }
                 }
-
-//
-//            DispatchQueue.main.async {
-//                self.titleLabel.text = self.titled
-//                if let likes = recipeData.aggregateLikes {
-//                    self.totalLikes.text = String(likes)
-//                }else {
-//                    self.totalLikes.text = ""
-//                }
-//
-//                if let rating = recipeData.healthScore {
-//                    self.healthScore.text = String(rating)
-//                }else{
-//                    self.healthScore.text = ""
-//                }
-//
-//                if let servings = recipeData.servings {
-//                    self.servings.text = String(servings)
-//                }else{ self.servings.text = ""}
-//
-//                if let time = recipeData.readyInMinutes{
-//                    self.timeLabel.text = String(time)
-//                }else { self.timeLabel.text = "" }
-//
-//                self.titleLabel.text = self.titled
-//
-//                if let wineNote = recipeData.winePairing?.pairingText{
-//                    print(wineNote)
-//                    self.wineList.text = wineNote
-//                }
-//
-//                //unwrap optional value
-//                if let summary = recipeData.summary{
-//                    let htmlString = summary
-//                    if let plainText = self.convertHTMLToPlainText(htmlString: htmlString) {
-//                        self.summaryView.text = plainText
-//                    } else {
-//                        print("Failed to convert HTML to plain text.")
-//                    }
-//                }
-//
-//
-//
-//                if let url = self.imageUrl{
-//                    let url = URL(string:url)
-//                    URLSession.shared.dataTask(with: url!) { (data, response, error) in
-//                        guard let data = data, let image = UIImage(data: data) else {
-//                            return
-//                        }
-//                        DispatchQueue.main.async {
-//                            self.imageView.image = image
-//                        }
-//                    }.resume()
-//                }
-//
-//            }
-            
-            
+                
+                if let url = self.imageUrl {
+                    let url = URL(string: url)
+                    URLSession.shared.dataTask(with: url!) { (data, response, error) in
+                        guard let data = data, let image = UIImage(data: data) else {
+                            return
+                        }
+                        DispatchQueue.main.async {
+                            self.imageView.image = image
+                        }
+                    }.resume()
+                }
+            }
+        }
+        
+        
         catch let error{
             print(error)
         }
@@ -176,15 +126,23 @@ class RecipeOverview_ViewController: UIViewController {
         return nil
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "listSegue" {
+            if let destination = segue.destination as? IngredientListTableViewController{
+                destination.id = self.id
+            }
+        }
+        
     }
-    */
-
 }

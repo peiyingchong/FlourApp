@@ -10,6 +10,7 @@ import UIKit
 class SearchRecipesTableViewController: UITableViewController ,UISearchBarDelegate{
     
     
+    
     var indicator = UIActivityIndicatorView()
     
     var newRecipes = [RecipeData]()
@@ -86,6 +87,7 @@ class SearchRecipesTableViewController: UITableViewController ,UISearchBarDelega
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let recipe = newRecipes[indexPath.row]
         self.performSegue(withIdentifier: "recipeOverviewSegue", sender: self)
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -148,7 +150,6 @@ class SearchRecipesTableViewController: UITableViewController ,UISearchBarDelega
             
             //Because the data returned is a JsonObject, and the field wanted is an array of Json Object
             let resultContainer = try decoder.decode(SearchRecipe.self, from: data)
-            
             if let recipe = resultContainer.recipes{
                 for item in recipe {
                     newRecipes.append(item)
@@ -172,10 +173,9 @@ class SearchRecipesTableViewController: UITableViewController ,UISearchBarDelega
       
         navigationItem.searchController?.dismiss(animated: true)
         indicator.startAnimating()
-        
         URLSession.shared.invalidateAndCancel()
-        let url = "https://api.spoonacular.com/recipes/complexSearch?query=\(searchText)&apiKey=75fb6b5ec943413cb3932877813f3226"
-        
+        let url = "https://api.spoonacular.com/recipes/complexSearch?query=\(searchText)&apiKey=8a20103f31cd4cd49daadeeb8dfc99d8"
+//        let url = "https://api.spoonacular.com/recipes/complexSearch?query=\(searchText)&apiKey=75fb6b5ec943413cb3932877813f3226"
         Task{
             //check for valid url string
             guard let urlReq = URL(string:url) else{

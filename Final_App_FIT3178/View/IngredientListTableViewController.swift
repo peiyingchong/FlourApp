@@ -9,31 +9,43 @@ import UIKit
 
 class IngredientListTableViewController: UITableViewController {
     
+    
+    @IBAction func nextButtonTapped(_ sender: Any) {
+        self.performSegue(withIdentifier: "stepSegue", sender: self)
+    }
+    
+    var id: Int?
     //set the cell identifiers as constants
     let CELL_INGREDIENT = "IngredientCell"
     var listOfIngredients = [RecipeInfo]()
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.allowsMultipleSelection = true
-
+        
+        performReq()
+        
+    }
+    func performReq(){
+        guard let id = self.id else {
+            return
+        }
+        let url = "https://api.spoonacular.com/recipes/\(id)/information?includeNutrition=false&apiKey=8a20103f31cd4cd49daadeeb8dfc99d8"
+//        let url = "https://api.spoonacular.com/recipes/\(id)/information?includeNutrition=false&apiKey=75fb6b5ec943413cb3932877813f3226"
         Task{
             //check for valid url string
-            guard let url = URL(string: "https://api.spoonacular.com/recipes/716429/information?includeNutrition=false&apiKey=75fb6b5ec943413cb3932877813f3226") else{
+            guard let urlReq = URL(string:url) else{
                 print("Invalid URL")
                 return
             }
             //api request
-            await getIngredients(url: url)
-            
-            //reload tableView on main thread after getting the response
+            await getIngredients(url: urlReq)
             DispatchQueue.main.async{
                 self.tableView.reloadData()
             }
         }
+        
     }
-
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -146,4 +158,13 @@ class IngredientListTableViewController: UITableViewController {
             print(error)
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "stepSegue" {
+            if let destination = segue.destination as? StepsViewController{
+                destination.id = self.id
+            }
+        }
+    }
+    
 }
