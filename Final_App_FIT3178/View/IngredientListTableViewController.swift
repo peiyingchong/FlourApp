@@ -11,7 +11,7 @@ class IngredientListTableViewController: UITableViewController {
     
     
     @IBAction func nextButtonTapped(_ sender: Any) {
-        self.performSegue(withIdentifier: "stepSegue", sender: self)
+        self.performSegue(withIdentifier: "startSegue", sender: self)
     }
     
     var id: Int?
@@ -153,6 +153,7 @@ class IngredientListTableViewController: UITableViewController {
                 }
                 
             }
+            self.tableView.reloadData()
         }
         catch let error{
             print(error)
@@ -160,8 +161,8 @@ class IngredientListTableViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "stepSegue" {
-            if let destination = segue.destination as? StepsViewController{
+        if segue.identifier == "startSegue" {
+            if let destination = segue.destination as? GetStartedViewController{
                 destination.id = self.id
             }
         }

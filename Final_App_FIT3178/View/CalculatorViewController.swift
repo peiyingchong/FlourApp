@@ -71,6 +71,7 @@ class CalculatorViewController: UIViewController,LocationDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tabBarItem.selectedImage = UIImage(named: "love")
         
         // Do any additional setup after loading the view.
     }

@@ -7,119 +7,78 @@
 
 import UIKit
 
-class StepsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
+class StepsViewController: UIViewController{
     
-    
-    @IBOutlet weak var collectionView: UICollectionView!
+    var index = 0
     
     var id: Int?
     
-    
     var steps = [Instruction]()
 
+    @IBOutlet weak var instructionsTV: UILabel!
     
+    @IBOutlet weak var stepNumber: UILabel!
     
     @IBOutlet weak var pageControl: UIPageControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        pageControl.currentPage = 0 
-        pageControl.numberOfPages = steps.count
-        performReq()
+        
+        pageControl.currentPage = 0
+        pageControl.numberOfPages = steps.count + 1
+        
+        if index != 0 {
+            index = 0
+            stepNumber.text = "Firstly, Step 1: "
+            instructionsTV.text = "\(steps[index].instructionStep!)"
+        }else {
+            stepNumber.text = "Firstly, Step 1: "
+            instructionsTV.text = "\(steps[index].instructionStep!)"}
+        
         
         // Do any additional setup after loading the view.
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return steps.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "slideCell", for: indexPath) as! SlidingCell
-        
-        let step = steps[indexPath.row]
-        cell.instructionLabel.text = step.instructionStep
-        return cell
-    }
-    
-    func performReq(){
-        guard let id = self.id else {
-            return
-        }
-        let url = "https://api.spoonacular.com/recipes/\(id)/analyzedInstructions?apiKey=8a20103f31cd4cd49daadeeb8dfc99d8"
 
-        
-//        let url = "https://api.spoonacular.com/recipes/\(id)/analyzedInstructions?apiKey=75fb6b5ec943413cb3932877813f3226"
-        Task{
-            //check for valid url string
-            guard let urlReq = URL(string:url) else{
-                print("Invalid URL")
-                return
+
+    @IBAction func swipeToLeft(_ sender: Any) {
+        //next step
+        index += 1
+        if index != steps.count {
+            //instructionsTV.text = "\(index)"
+            instructionsTV.text = " \(steps[index].instructionStep!)"
+            stepNumber.text = "Step: \(index + 1)"
+            //because the array has instructions of step 1 multiple time for different part of the recipe
+            // so if we encounter another number 1, then it means it's the next part
+            if steps[index].instrcutionNumber == 1 {
+                stepNumber.text = "Next Thing that we have to do "
             }
-            //api request
-            await getSteps(url: urlReq)
-            collectionView.reloadData()
         }
-        
+        else{
+            //last step
+            stepNumber.text = "Good Job! We are done"
+            instructionsTV.text = ""
+        }
+        pageControl.currentPage = index
     }
-        
-    func getSteps(url: URL) async{
-        do{
-            let(data, _) = try await URLSession.shared.data(for: URLRequest(url: url))
-            //create a JSONDecoder instance
-            let decoder = JSONDecoder()
-            
-            //Because the data returned is a JsonArray
-            let resultContainer = try decoder.decode([RecipeStep.Instruction].self, from: data)
-            print(resultContainer)
-            for s in resultContainer{
-                let instruction = Instruction()
-                //get the steps array: which contains [equiment], [ingredients],number,step
-                if let arrayOfSteps = s.steps{
-                    //get the [equiement],step,number
-                    for step in arrayOfSteps{
-                        //do smtg with equipment array
-                        if let equipments = step.equipment {
-                            for i in equipments{
-                                instruction.equipmentName = i.name
-                                instruction.equipmentImage = i.image
-                            }
-                        }
-                        //get the step & number
-                        if let number = step.number{
-                            instruction.instrcutionNumber = number
-                        }
-                        if let stepString = step.step{
-                            instruction.instructionStep = stepString
-                        }
-                    }
-                }
-                steps.append(instruction)
+    
+    
+    @IBAction func swipeToRight(_ sender: Any) {
+        //previous step
+        if index != 0 {
+            index -= 1
+            instructionsTV.text = " \(steps[index].instructionStep!)"
+            if index == 0 {
+                //check if it's the very beginning of the array 
+                stepNumber.text = "Firstly, Step 1: "
             }
-            
-        }
-        catch let error{
-            print(error)
+            else {
+                stepNumber.text = "Step \(steps[index].instrcutionNumber!)"
+                
+            }
+            pageControl.currentPage = index
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        pageControl.currentPage = indexPath.row
-    }
-        
-        
-        
-        
-        /*
-         // MARK: - Navigation
-         
-         // In a storyboard-based application, you will often want to do a little preparation before navigation
-         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         // Get the new view controller using segue.destination.
-         // Pass the selected object to the new view controller.
-         }
-         */
-    
-    
+
 }

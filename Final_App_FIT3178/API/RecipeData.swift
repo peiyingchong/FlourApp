@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RecipeData: NSObject,Decodable {
+class RecipeData: NSObject,Codable {
     
     var id: Int
     var title: String

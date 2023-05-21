@@ -12,12 +12,6 @@ class HomePageViewController: UIViewController{
     
     private let locationManager = CLLocationManager()
     
-    
-    
-    @IBAction func toCalculatorPage(_ sender: Any) {
-        self.performSegue(withIdentifier: "calculatorSegue", sender: self)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,7 +40,6 @@ class HomePageViewController: UIViewController{
         
         
     }
-    
     
    
     

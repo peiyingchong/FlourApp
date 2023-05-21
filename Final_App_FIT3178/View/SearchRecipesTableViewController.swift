@@ -26,15 +26,23 @@ class SearchRecipesTableViewController: UITableViewController ,UISearchBarDelega
         searchController.searchBar.placeholder = "Search"
         searchController.searchBar.showsCancelButton = false
         navigationItem.searchController = searchController
-        
+
         // Add a loading indicator view
         indicator.style = UIActivityIndicatorView.Style.large
         indicator.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(indicator)
         NSLayoutConstraint.activate([indicator.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),indicator.centerYAnchor.constraint(equalTo:view.safeAreaLayoutGuide.centerYAnchor)])
         
+        definesPresentationContext = true
 
 
+
+    }
+
+    
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+           searchBar.showsCancelButton = true
     }
 
     // MARK: - Table view data source
@@ -174,7 +182,7 @@ class SearchRecipesTableViewController: UITableViewController ,UISearchBarDelega
         navigationItem.searchController?.dismiss(animated: true)
         indicator.startAnimating()
         URLSession.shared.invalidateAndCancel()
-        let url = "https://api.spoonacular.com/recipes/complexSearch?query=\(searchText)&apiKey=8a20103f31cd4cd49daadeeb8dfc99d8"
+        let url = "https://api.spoonacular.com/recipes/complexSearch?query=\(searchText)&type=bread&apiKey=8a20103f31cd4cd49daadeeb8dfc99d8"
 //        let url = "https://api.spoonacular.com/recipes/complexSearch?query=\(searchText)&apiKey=75fb6b5ec943413cb3932877813f3226"
         Task{
             //check for valid url string

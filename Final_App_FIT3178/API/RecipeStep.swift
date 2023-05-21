@@ -7,33 +7,33 @@
 
 import UIKit
 
-class RecipeStep: NSObject, Decodable {
+class RecipeStep: NSObject, Codable {
     
-    struct Instruction: Decodable {
+    struct Instruction: Codable {
         let steps: [Step]?
     }
 
-    struct Step: Decodable {
+    struct Step: Codable {
         let equipment: [Equipment]?
         let ingredients: [Ingredient]?
-        let number: Int?
-        let step: String?
+        let number: Int
+        let step: String
     }
 
-    struct Equipment: Decodable {
+    struct Equipment: Codable {
         let id: Int?
         let image: String?
         let name: String?
         let temperature: Temperature?
     }
 
-    struct Ingredient: Decodable {
+    struct Ingredient: Codable {
         let id: Int?
         let image: String?
         let name: String?
     }
 
-    struct Temperature: Decodable {
+    struct Temperature: Codable {
         let number: Double?
         let unit: String?
     }
