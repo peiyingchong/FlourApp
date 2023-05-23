@@ -191,10 +191,10 @@ class RecipeOverview_ViewController: UIViewController{
         if status == true{
             savedButton.setTitle("saved", for: .normal)
         }
-        else{
-            savedButton.setTitle("save", for: .normal)
-            savedButton.isEnabled = true
-        }
+//        else{
+//            savedButton.setTitle("save", for: .normal)
+//            savedButton.isEnabled = true
+//        }
     }
     
     
@@ -230,6 +230,7 @@ class RecipeOverview_ViewController: UIViewController{
         // Display the image in the UIImageView
         imageView.image = image
     }
+    
     
 }
 

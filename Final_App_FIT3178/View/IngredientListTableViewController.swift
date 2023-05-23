@@ -9,18 +9,28 @@ import UIKit
 
 class IngredientListTableViewController: UITableViewController {
     
+    //nextSegue
     
     @IBAction func nextButtonTapped(_ sender: Any) {
-        self.performSegue(withIdentifier: "startSegue", sender: self)
+        self.performSegue(withIdentifier: "nextSegue", sender: self)
+
     }
     
     var id: Int?
     //set the cell identifiers as constants
     let CELL_INGREDIENT = "IngredientCell"
     var listOfIngredients = [RecipeInfo]()
+    
+    private let nextButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Next", for: .normal)
+        return button
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+
         self.tableView.allowsMultipleSelection = true
         
         performReq()
@@ -161,7 +171,7 @@ class IngredientListTableViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "startSegue" {
+        if segue.identifier == "nextSegue" {
             if let destination = segue.destination as? GetStartedViewController{
                 destination.id = self.id
             }

@@ -73,30 +73,27 @@ class SavedRecipesTableViewController: UITableViewController {
         }
     }
     
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let recipe = savedRecipes[indexPath.row]
+        self.performSegue(withIdentifier: "savedOverview", sender: self)
+        
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "savedOverview" {
+            if let destination = segue.destination as? RecipeOverview_ViewController,
+               let indexPath = tableView.indexPathForSelectedRow {
+                let recipe = savedRecipes[indexPath.row]
+                destination.id = Int(recipe.id)
+                destination.titled = recipe.title
+                destination.aggregateLikesProp = Int(recipe.like)
+                destination.healthScoreProp = recipe.healthScore
+                destination.summaryProp = recipe.summary
+                destination.readyInMinutesProp = Int(recipe.readyTime)
+                destination.servingsProp = recipe.serving
+                destination.wineListPairingProp = recipe.winePairing
+            }
+        }
     }
-    */
 
 }
