@@ -15,6 +15,7 @@ enum Sections: Int{
 }
 class HomePageViewController: UIViewController{
     
+    
     //header section titles
     let sectionTitles: [String] = ["Trending Recipes","Gluten Free Recipes","Vegan Recipes"]
     
@@ -30,7 +31,6 @@ class HomePageViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(homeTable)
-        
         homeTable.delegate = self
         homeTable.dataSource = self
         configureNavBar()
@@ -92,9 +92,25 @@ extension HomePageViewController: UITableViewDelegate, UITableViewDataSource{
         cell.delegate  = self
         switch indexPath.section{
         case Sections.GlutenFreeRecipes.rawValue:
-            print("here")
+            APICaller.shared.getGlutenFreeRecipes{ result in
+                switch result{
+                case .success(let recipes):
+                    cell.configure(with: recipes)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
         case Sections.VeganRecipes.rawValue:
             APICaller.shared.getVeganRecipes { result in
+                switch result{
+                case .success(let recipes):
+                    cell.configure(with: recipes)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+        case Sections.TrendingRecipes.rawValue:
+            APICaller.shared.popularRecipes { result in
                 switch result{
                 case .success(let recipes):
                     cell.configure(with: recipes)
@@ -140,9 +156,9 @@ extension HomePageViewController: UITableViewDelegate, UITableViewDataSource{
 extension HomePageViewController: CollectionViewTableViewCellDelegate{
     
     func CollectionViewTableViewCellDidTapCell(_ cell: CollectionViewTableViewCell, recipe: RecipeData) {
-            performSegue(withIdentifier: "toRecipeOverviewVC", sender: recipe)
-        }
-        
+        performSegue(withIdentifier: "toRecipeOverviewVC", sender: recipe)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toRecipeOverviewVC",
            let destination = segue.destination as? RecipeOverview_ViewController,
@@ -152,11 +168,4 @@ extension HomePageViewController: CollectionViewTableViewCellDelegate{
             destination.imageUrl = recipe.image
         }
     }
-    
-//    func CollectionViewTableViewCellDidTapCell(_ cell: CollectionViewTableViewCell, recipe: RecipeData) {
-//        let destination = RecipeOverview_ViewController()
-//        DispatchQueue.main.async { [weak self] in
-//            destination.configure(with: recipe)
-//            self?.navigationController?.pushViewController(destination, animated: true)}
-//    }
 }

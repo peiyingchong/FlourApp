@@ -17,6 +17,7 @@ class IngredientListTableViewController: UITableViewController {
     }
     
     var id: Int?
+    var titled: String?
     //set the cell identifiers as constants
     let CELL_INGREDIENT = "IngredientCell"
     var listOfIngredients = [RecipeInfo]()
@@ -174,6 +175,7 @@ class IngredientListTableViewController: UITableViewController {
         if segue.identifier == "nextSegue" {
             if let destination = segue.destination as? GetStartedViewController{
                 destination.id = self.id
+                destination.titled = self.titled
             }
         }
     }

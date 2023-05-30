@@ -14,7 +14,7 @@ class GetStartedViewController: UIViewController {
     
     var steps = [Instruction]()
     
-    
+    var titled: String?
     
     @IBAction func onGetStarted(_ sender: Any) {
         self.performSegue(withIdentifier: "instructionsSegue", sender: self)
@@ -94,6 +94,8 @@ class GetStartedViewController: UIViewController {
         if segue.identifier == "instructionsSegue" {
             if let destination = segue.destination as? StepsViewController{
                 destination.steps = self.steps
+                destination.id = self.id
+                destination.titled = self.titled
             }
         }
     }

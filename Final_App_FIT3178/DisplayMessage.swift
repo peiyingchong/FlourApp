@@ -11,7 +11,7 @@ extension UIViewController {
 
             let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
-            FirebaseController().getTopMostViewController()?.present(alertController, animated: true, completion: nil)
+            FirebaseController.shared.getTopMostViewController()?.present(alertController, animated: true, completion: nil)
     }
     
     

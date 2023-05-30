@@ -35,7 +35,7 @@ class logInViewController: UIViewController {
         Auth.auth().addStateDidChangeListener { auth, user in
             //if user is signed in
             if let _ = user {
-                FirebaseController().currentUser = user;
+                FirebaseController.shared.currentUser = user;
                 print("SuccessfulLogin")
                 self.performSegue(withIdentifier: "successfulLogin", sender: self)
                 print("SuccessfulLogin")
@@ -57,15 +57,15 @@ class logInViewController: UIViewController {
     
     
     @IBAction func logInButtonTapped(_ sender: Any) {
-        if FirebaseController().validateFields(emailTF: emailTf.text, passwordTF: passwordTf.text){
-            FirebaseController().loginUser(withEmail: emailTf.text!, password: passwordTf.text!)
+        if FirebaseController.shared.validateFields(emailTF: emailTf.text, passwordTF: passwordTf.text){
+            FirebaseController.shared.loginUser(withEmail: emailTf.text!, password: passwordTf.text!)
         }
     }
     
     
     @IBAction func googleButtonTapped(_ sender: Any) {
         Task { @MainActor in
-            await FirebaseController().signInWithGoogle()
+            await FirebaseController.shared.signInWithGoogle()
         }
     }
     @objc func startSignInWithAppleFlow() {

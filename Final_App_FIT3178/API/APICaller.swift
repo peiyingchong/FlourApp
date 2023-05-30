@@ -10,8 +10,8 @@ import Foundation
 class APICaller{
     static let shared = APICaller()
     
-    func getVeganRecipes(completion: @escaping (Result<[RecipeData],Error>) ->Void){
-        guard let url = URL(string: "https://api.spoonacular.com/recipes/complexSearch?diet=vegan&apiKey=8a20103f31cd4cd49daadeeb8dfc99d8") else {return}
+    func popularRecipes(completion: @escaping (Result<[RecipeData],Error>) ->Void){
+        guard let url = URL(string: "https://api.spoonacular.com/recipes/complexSearch?type=bread&sort=popularity&apiKey=8a20103f31cd4cd49daadeeb8dfc99d8") else {return}
         let task = URLSession.shared.dataTask(with: URLRequest(url: url))
         {data, _, error in guard let data = data, error == nil else{
             return
@@ -27,6 +27,40 @@ class APICaller{
         task.resume()
     }
     
+    func getVeganRecipes(completion: @escaping (Result<[RecipeData],Error>) ->Void){
+        guard let url = URL(string: "https://api.spoonacular.com/recipes/complexSearch?type=bread&diet=vegan&apiKey=8a20103f31cd4cd49daadeeb8dfc99d8") else {return}
+        let task = URLSession.shared.dataTask(with: URLRequest(url: url))
+        {data, _, error in guard let data = data, error == nil else{
+            return
+            
+        }
+            do {
+                let results = try JSONDecoder().decode(SearchRecipe.self, from: data)
+                completion(.success(results.recipes ?? []))
+            } catch {
+                completion(.failure(error))
+            }
+        }
+        task.resume()
+    }
+    
+    
+    func getGlutenFreeRecipes(completion: @escaping (Result<[RecipeData],Error>) ->Void){
+        guard let url = URL(string: "https://api.spoonacular.com/recipes/complexSearch?type=bread&diet=glutenfree&apiKey=8a20103f31cd4cd49daadeeb8dfc99d8") else {return}
+        let task = URLSession.shared.dataTask(with: URLRequest(url: url))
+        {data, _, error in guard let data = data, error == nil else{
+            return
+            
+        }
+            do {
+                let results = try JSONDecoder().decode(SearchRecipe.self, from: data)
+                completion(.success(results.recipes ?? []))
+            } catch {
+                completion(.failure(error))
+            }
+        }
+        task.resume()
+    }
     
 //    func getVeganRecipes(){
 //        let url = "https://api.spoonacular.com/recipes/complexSearch?diet=vegan&apiKey=8a20103f31cd4cd49daadeeb8dfc99d8"

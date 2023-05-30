@@ -33,13 +33,13 @@ class SignUpViewController: UIViewController {
         view.addSubview(appleSignInButton)
         appleSignInButton.addTarget(self, action: #selector(startSignInWithAppleFlow), for: .touchUpInside)
         
-        Auth.auth().addStateDidChangeListener { auth, user in
-            //if user is signed in
-            if let user = user {
-                FirebaseController().currentUser = user;
-                self.performSegue(withIdentifier: "succesful_login_segue", sender: self)
-            }
-        }
+//        Auth.auth().addStateDidChangeListener { auth, user in
+//            //if user is signed in
+//            if let user = user {
+//                FirebaseController.shared.currentUser = user;
+//                self.performSegue(withIdentifier: "successfulLogin", sender: self)
+//            }
+//        }
 
         
     }
@@ -57,14 +57,14 @@ class SignUpViewController: UIViewController {
     
     
     @IBAction func signUpButtonTapped(_ sender: Any) {
-        if FirebaseController().validateFields(emailTF: emailTf.text, passwordTF: passwordTf.text){
-            FirebaseController().signUpUser(withEmail: emailTf.text!, password: passwordTf.text!)
+        if FirebaseController.shared.validateFields(emailTF: emailTf.text, passwordTF: passwordTf.text){
+            FirebaseController.shared.signUpUser(withEmail: emailTf.text!, password: passwordTf.text!)
         }
     }
     
     @IBAction func googleButtonTapped(_ sender: Any) {
         Task { @MainActor in
-            await FirebaseController().signInWithGoogle()
+            await FirebaseController.shared.signInWithGoogle()
         }
     }
     @objc func startSignInWithAppleFlow() {

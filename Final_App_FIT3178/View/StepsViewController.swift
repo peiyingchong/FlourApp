@@ -13,6 +13,13 @@ class StepsViewController: UIViewController{
     
     var id: Int?
     
+    var titled: String?
+    
+    
+    @IBAction func writeReviewButton(_ sender: Any) {
+        self.performSegue(withIdentifier: "reviewSegue", sender: self)
+    }
+    
     var steps = [Instruction]()
 
     @IBOutlet weak var instructionsTV: UILabel!
@@ -21,8 +28,16 @@ class StepsViewController: UIViewController{
     
     @IBOutlet weak var pageControl: UIPageControl!
     
+    
+    @IBOutlet weak var reviewButton: UIButton!
+    
+    
+    @IBOutlet weak var skipButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        reviewButton.isHidden = true
+        skipButton.isHidden = true
         
         pageControl.currentPage = 0
         pageControl.numberOfPages = steps.count + 1
@@ -44,6 +59,8 @@ class StepsViewController: UIViewController{
     @IBAction func swipeToLeft(_ sender: Any) {
         //next step
         index += 1
+        reviewButton.isHidden = true
+        skipButton.isHidden = true
         if index != steps.count {
             //instructionsTV.text = "\(index)"
             instructionsTV.text = " \(steps[index].instructionStep!)"
@@ -58,12 +75,16 @@ class StepsViewController: UIViewController{
             //last step
             stepNumber.text = "Good Job! We are done"
             instructionsTV.text = ""
+            reviewButton.isHidden = false
+            skipButton.isHidden = false
         }
         pageControl.currentPage = index
     }
     
     
     @IBAction func swipeToRight(_ sender: Any) {
+        reviewButton.isHidden = true
+        skipButton.isHidden = true
         //previous step
         if index != 0 {
             index -= 1
@@ -78,6 +99,17 @@ class StepsViewController: UIViewController{
             }
             pageControl.currentPage = index
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "reviewSegue" {
+            if let destination = segue.destination as? UploadReviewViewController{
+                destination.id = self.id
+                destination.titled = self.titled
+                
+            }
+        }
+        
     }
     
 

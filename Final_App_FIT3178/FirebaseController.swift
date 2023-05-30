@@ -15,6 +15,9 @@ import AuthenticationServices
 
 class FirebaseController {
     
+    
+    static let shared = FirebaseController()
+    
     var currentUser: FirebaseAuth.User?
   
     

@@ -181,6 +181,7 @@ class RecipeOverview_ViewController: UIViewController{
         if segue.identifier == "listSegue" {
             if let destination = segue.destination as? IngredientListTableViewController{
                 destination.id = self.id
+                destination.titled = self.titled
             }
         }
         

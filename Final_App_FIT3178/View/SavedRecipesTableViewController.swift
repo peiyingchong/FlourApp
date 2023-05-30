@@ -13,6 +13,7 @@ class SavedRecipesTableViewController: UITableViewController {
     
     let identifier = "recipeCell"
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         savedRecipes = CoreDataController.shared.fetchSavedRecipes()
