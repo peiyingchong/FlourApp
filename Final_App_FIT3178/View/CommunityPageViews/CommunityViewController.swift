@@ -37,7 +37,7 @@ class CommunityViewController: UIViewController {
         refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
 
         
-        fetchPosts()
+        //fetchPosts()
         
         print("posts.count: \(posts.count)")
         
@@ -71,50 +71,38 @@ class CommunityViewController: UIViewController {
             // Loop through all the posts
             for (_, postData) in postsSnap {
                 //bcz postData is of type AnyObject, we cast it as String
-//                guard let post = postData as? [String: Any] else{
-//                    return
-//                }
-//                if let recipeId = post["recipeId"] as? Int{
-//                    print("recipeId \(recipeId)")
-//                }
-//                if let userID = post["userID"] as? String{
-//                    print("userID \(userID)")
-//                }
-//                if let title = post["title"] as? String{
-//                    print("title \(title)")
-//                }
-//                if let imagePath = post["pathToImage"] as? String{
-//                    print("imagePaht \(imagePath)")
-//                }
-//                if let comment = post["comment"] as? String{
-//                    print("comment \(comment)")
-//                }
-//
-                //bcz postData is of type AnyObject, we cast it as String
                 guard let post = postData as? [String: Any] else{
                     return}
                 if let recipeId = post["recipeId"] as? Int,
                    let userID = post["userID"] as? String,
                    let title = post["title"] as? String,
                    let imagePath = post["pathToImage"] as? String,
-                   let comment = post["comment"] as? String {
+                   let comment = post["comment"] as? String,
+                   let postId = post["postID"] as? String{
 
-                    print("recipeid: \(recipeId)")
-                    self.fetchImage(for: imagePath) { result in
-                        switch result {
-                        case .success(let imageData):
-                            // Use the image data
-                            let postViewModel = UserPostViewModel(userId: userID, recipeId: recipeId, title: title, photoData: imageData, comment: comment)
-                            self.posts.append(postViewModel)
-                            DispatchQueue.main.async {
-                                self.tableView.reloadData()
+                    //check if posts already exist because we dont want to append again after refreshing
+                    let postExists = self.posts.contains { $0.postID == postId }
+                        
+                    if !postExists {
+                        print("recipeid: \(recipeId)")
+                        self.fetchImage(for: imagePath) { result in
+                            switch result {
+                            case .success(let imageData):
+                                // Use the image data
+                                let postViewModel = UserPostViewModel(userId: userID, recipeId: recipeId, title: title, photoData: imageData, comment: comment, postID: postId)
+                                
+                                self.posts.append(postViewModel)
+                                
+                                print("Image data:", imageData)
+                            case .failure(let error):
+                                // Handling the error
+                                print("Error fetching image:", error)
                             }
-                            print("Image data:", imageData)
-                        case .failure(let error):
-                            // Handling the error
-                            print("Error fetching image:", error)
                         }
                     }
+                }
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
                 }
             }
         }
@@ -167,6 +155,22 @@ extension CommunityViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 400
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "communityToOverviewVC", sender: self)
+    }
+
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "communityToOverviewVC" {
+            if let destination = segue.destination as? RecipeOverview_ViewController,
+               let indexPath = tableView.indexPathForSelectedRow {
+                let post = posts[indexPath.row]
+                destination.id = post.recipeId
+                destination.titled = post.title
+            }
+        }
     }
     
     

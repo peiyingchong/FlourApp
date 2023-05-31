@@ -25,12 +25,10 @@ class UploadReviewViewController: UIViewController,UIImagePickerControllerDelega
         guard let uid = FirebaseController.shared.currentUser?.uid else {
             return
         }
-        let post = UserPostViewModel(userId: uid, recipeId: id ?? 0, title: titled, photoData: image, comment: commentText.text)
+        let postid = UUID().uuidString
+        let post = UserPostViewModel(userId: uid, recipeId: id ?? 0, title: titled, photoData: image, comment: commentText.text, postID: postid)
         
         StorageManager.shared.uploadToFirebase(model: post)
-        
-        self.performSegue(withIdentifier: "doneUpload", sender: self)
-        
         
         
     }

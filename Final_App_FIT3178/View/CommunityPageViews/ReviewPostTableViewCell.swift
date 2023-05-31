@@ -97,13 +97,16 @@ class UserPostViewModel{
     let title: String?
     var photoData: Data?
     var comment: String?
-
-    init( userId: String?, recipeId: Int,title: String?,photoData: Data?,comment: String?){
+    var postID: String?
+    
+    init( userId: String?, recipeId: Int,title: String?,photoData: Data?,comment: String?, postID: String?){
         self.userId = userId
         self.recipeId = recipeId
         self.comment = comment
         self.title = title
         self.photoData = photoData
+        self.postID = postID
     }
+    
 
 }

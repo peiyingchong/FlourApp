@@ -706,23 +706,23 @@
             <objects>
                 <viewController id="HwO-FE-7Ta" customClass="UploadReviewViewController" customModule="Final_App_FIT3178" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="k9q-4v-qrB">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="720"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TgI-z4-w4o">
-                                <rect key="frame" x="20" y="79" width="353" height="32"/>
+                                <rect key="frame" x="20" y="123" width="353" height="32"/>
                                 <fontDescription key="fontDescription" name="STIXTwoText" family="STIX Two Text" pointSize="32"/>
                                 <color key="textColor" red="0.61399147720000002" green="0.40267857470000001" blue="0.17937515400000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What did you think about this recipe?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1n3-pH-nFl">
-                                <rect key="frame" x="20" y="151" width="353" height="63"/>
+                                <rect key="frame" x="20" y="195" width="353" height="63"/>
                                 <fontDescription key="fontDescription" name="Thonburi" family="Thonburi" pointSize="24"/>
                                 <color key="textColor" red="0.61399147720000002" green="0.40267857470000001" blue="0.17937515400000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your comment" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="eDI-PV-Vm4">
-                                <rect key="frame" x="20" y="234" width="353" height="50"/>
+                                <rect key="frame" x="20" y="278" width="353" height="50"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="2bc-6l-yvM"/>
@@ -732,7 +732,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cX0-75-vPh">
-                                <rect key="frame" x="20" y="314" width="353" height="44"/>
+                                <rect key="frame" x="20" y="358" width="353" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Ftl-FV-GIc"/>
                                 </constraints>
@@ -748,10 +748,10 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Elv-t5-xBg">
-                                <rect key="frame" x="20" y="378" width="353" height="258"/>
+                                <rect key="frame" x="20" y="422" width="353" height="263"/>
                             </imageView>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K0I-pk-txe">
-                                <rect key="frame" x="20" y="656" width="353" height="44"/>
+                                <rect key="frame" x="20" y="705" width="353" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="U3O-3E-K3Q"/>
                                 </constraints>
@@ -765,6 +765,7 @@
                                     <action selector="submitButton:" destination="HwO-FE-7Ta" eventType="touchUpInside" id="yb4-75-ZVD"/>
                                     <action selector="uploadButton:" destination="HwO-FE-7Ta" eventType="touchUpInside" id="Dm2-pX-W6L"/>
                                     <action selector="uploadButton:" destination="kim-zV-bUg" eventType="touchUpInside" id="E79-tK-4zB"/>
+                                    <segue destination="xQL-XU-JkH" kind="show" id="YRf-I8-sol"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -798,7 +799,6 @@
                         <outlet property="commentText" destination="eDI-PV-Vm4" id="78B-Oh-4Kh"/>
                         <outlet property="imageView" destination="Elv-t5-xBg" id="TQ3-5W-UWc"/>
                         <outlet property="titleLabel" destination="TgI-z4-w4o" id="iCW-ia-fVN"/>
-                        <segue destination="xQL-XU-JkH" kind="show" identifier="doneUpload" id="EBX-jl-VGm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Rw-du-vTn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1091,7 +1091,7 @@
             <objects>
                 <viewController id="xQL-XU-JkH" customClass="HomePageViewController" customModule="Final_App_FIT3178" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pW4-xN-vSb">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="769"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="HOMEPAGE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jYh-BC-CRm">
@@ -1133,8 +1133,7 @@
                         <segue destination="YYW-9I-QzZ" kind="relationship" relationship="viewControllers" id="iZx-q8-34i"/>
                         <segue destination="CeT-u5-YDP" kind="relationship" relationship="viewControllers" id="yEP-0L-3ZT"/>
                         <segue destination="PI2-Hd-tso" kind="relationship" relationship="viewControllers" id="IEs-ot-P9t"/>
-                        <segue destination="HwO-FE-7Ta" kind="relationship" relationship="viewControllers" id="PBM-MG-Nrx"/>
-                        <segue destination="50h-JC-f5J" kind="relationship" relationship="viewControllers" id="8Gr-oB-qNS"/>
+                        <segue destination="50h-JC-f5J" kind="relationship" relationship="viewControllers" id="hKO-sC-lWT"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fN9-4h-iOq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1193,6 +1192,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="2lb-1q-djK"/>
+                    <connections>
+                        <segue destination="DRK-zd-ALK" kind="show" identifier="communityToOverviewVC" id="UGx-wf-q0z"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fEW-Sk-mx1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1224,7 +1226,7 @@
         <scene sceneID="mom-nn-cH7">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="50h-JC-f5J" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Community" selectedImage="person.2.fill" catalog="system" id="27O-9v-SWM"/>
+                    <tabBarItem key="tabBarItem" title="Community" image="person.2.fill" catalog="system" selectedImage="person.2.fill" id="27O-9v-SWM"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="gE1-D2-6hK">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -1241,9 +1243,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="EBX-jl-VGm"/>
-        <segue reference="PBM-MG-Nrx"/>
-        <segue reference="dCN-3t-vdz"/>
+        <segue reference="P6m-wz-ddg"/>
+        <segue reference="UGx-wf-q0z"/>
         <segue reference="fwz-gT-cod"/>
     </inferredMetricsTieBreakers>
     <resources>

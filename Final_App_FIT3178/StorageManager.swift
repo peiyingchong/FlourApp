@@ -41,13 +41,13 @@ public class StorageManager{
                 //if url is not nill
                 if let url = url {
                     //create a dictionary
-                    let feed  = ["userID" : uid ,"recipeId": model.recipeId, "pathToImage" : url.absoluteString, "title": model.title, "postID" : key, "comment": model.comment] as [String: Any]
+                    let feed  = ["userID" : uid ,"recipeId": model.recipeId, "pathToImage" : url.absoluteString, "title": model.title, "postkey" : key, "comment": model.comment,"postID":model.postID] as [String: Any]
                     
                     //creating a specific id and putting the feed under that branch
                     let postFeed = ["\(key)": feed]
                     
                     ref.child("posts").updateChildValues(postFeed)
-                    
+                    print("uploadSuccessful")
                 }
             })
         }
